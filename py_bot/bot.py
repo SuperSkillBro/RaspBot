@@ -12,11 +12,12 @@ def send_welcome(message):
 def rasp(message):
     bot.send_message(message.chat.id, "Привет! Вот актуальное расписание на сегодня: ")
     now = datetime.datetime.now()
+    curr_path = str(os.getcwd())
     if now.month < 10:
         g = '0' + str(now.month)
-        filename = 'D:/programms/py_bot/bd/' + str(now.day) + '.' + g + '.png'
+        filename = curr_path + '/bd/' + str(now.day) + '.' + g + '.png'
     else:
-        filename = 'D:/programms/py_bot/bd/' + str(now.day) + '.' + str(now.month) + '.png'
+        filename = curr_path + '/bd/' + str(now.day) + '.' + str(now.month) + '.png'
     photo = open(filename, 'rb')
     bot.send_photo(message.chat.id, photo)
 
